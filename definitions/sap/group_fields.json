@@ -1,0 +1,72 @@
+{
+    "fields": [
+        {
+            "name": "Code",
+            "type": "string",
+            "mandatory": true,
+            "description": "Unique identifier for the item group",
+            "max_length": 20,
+            "validation": "^[A-Za-z0-9-_]+$",
+            "system_specific": {
+                "readonly": false,
+                "auto_generated": false,
+                "notes": "Primary key for item group"
+            }
+        },
+        {
+            "name": "Name",
+            "type": "string",
+            "mandatory": true,
+            "description": "Name of the item group",
+            "max_length": 100,
+            "system_specific": {
+                "readonly": false,
+                "auto_generated": false,
+                "notes": "Display name for the group"
+            }
+        },
+        {
+            "name": "GroupNum",
+            "type": "integer",
+            "mandatory": false,
+            "description": "Internal number of the group",
+            "system_specific": {
+                "readonly": true,
+                "auto_generated": true,
+                "notes": "System-assigned number"
+            }
+        },
+        {
+            "name": "ParentGroup",
+            "type": "string",
+            "mandatory": false,
+            "description": "Code of the parent group",
+            "max_length": 20,
+            "system_specific": {
+                "readonly": false,
+                "auto_generated": false,
+                "notes": "Supports hierarchical group structure"
+            }
+        },
+        {
+            "name": "U_Description",
+            "type": "string",
+            "mandatory": false,
+            "description": "Extended description of the group",
+            "max_length": 254,
+            "system_specific": {
+                "readonly": false,
+                "auto_generated": false,
+                "notes": "User-defined field for additional description"
+            }
+        }
+    ],
+    "metadata": {
+        "entity": "group",
+        "system": "sap",
+        "version": "1.0",
+        "last_updated": "2024-12-13",
+        "status": "active",
+        "notes": "Based on SAP Business One Service Layer API documentation"
+    }
+}

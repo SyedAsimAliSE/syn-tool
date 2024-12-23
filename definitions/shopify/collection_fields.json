@@ -1,0 +1,149 @@
+{
+    "fields": [
+        {
+            "name": "id",
+            "type": "integer",
+            "mandatory": false,
+            "description": "Unique identifier for the collection",
+            "system_specific": {
+                "readonly": true,
+                "auto_generated": true,
+                "notes": "System-assigned ID"
+            }
+        },
+        {
+            "name": "title",
+            "type": "string",
+            "mandatory": true,
+            "description": "Name of the collection",
+            "max_length": 255,
+            "system_specific": {
+                "readonly": false,
+                "auto_generated": false,
+                "notes": "Display title for the collection"
+            }
+        },
+        {
+            "name": "handle",
+            "type": "string",
+            "mandatory": false,
+            "description": "URL-friendly name for the collection",
+            "max_length": 255,
+            "validation": "^[a-z0-9-]+$",
+            "system_specific": {
+                "readonly": false,
+                "auto_generated": true,
+                "notes": "Auto-generated from title if not provided"
+            }
+        },
+        {
+            "name": "body_html",
+            "type": "string",
+            "mandatory": false,
+            "description": "Description of the collection in HTML format",
+            "system_specific": {
+                "readonly": false,
+                "auto_generated": false,
+                "notes": "Supports HTML formatting"
+            }
+        },
+        {
+            "name": "published",
+            "type": "boolean",
+            "mandatory": false,
+            "description": "Whether the collection is published",
+            "default": true,
+            "system_specific": {
+                "readonly": false,
+                "auto_generated": false,
+                "notes": "Controls visibility on storefront"
+            }
+        },
+        {
+            "name": "sort_order",
+            "type": "string",
+            "mandatory": false,
+            "description": "Order in which products are sorted",
+            "enum": [
+                "alpha-asc",
+                "alpha-desc",
+                "best-selling",
+                "created",
+                "created-desc",
+                "manual",
+                "price-asc",
+                "price-desc"
+            ],
+            "default": "manual",
+            "system_specific": {
+                "readonly": false,
+                "auto_generated": false,
+                "notes": "Only applicable to manual collections"
+            }
+        },
+        {
+            "name": "template_suffix",
+            "type": "string",
+            "mandatory": false,
+            "description": "Template suffix for custom templates",
+            "system_specific": {
+                "readonly": false,
+                "auto_generated": false,
+                "notes": "For custom theme templates"
+            }
+        },
+        {
+            "name": "published_at",
+            "type": "datetime",
+            "mandatory": false,
+            "description": "Date and time when the collection was published",
+            "system_specific": {
+                "readonly": false,
+                "auto_generated": true,
+                "notes": "Set automatically when published"
+            }
+        },
+        {
+            "name": "updated_at",
+            "type": "datetime",
+            "mandatory": false,
+            "description": "Date and time when the collection was last updated",
+            "system_specific": {
+                "readonly": true,
+                "auto_generated": true,
+                "notes": "System-maintained timestamp"
+            }
+        },
+        {
+            "name": "rules",
+            "type": "array",
+            "mandatory": false,
+            "description": "Rules for smart collections",
+            "system_specific": {
+                "readonly": false,
+                "auto_generated": false,
+                "notes": "Only applicable to smart collections"
+            }
+        },
+        {
+            "name": "disjunctive",
+            "type": "boolean",
+            "mandatory": false,
+            "description": "Whether products must match all rules (false) or any rule (true)",
+            "default": false,
+            "system_specific": {
+                "readonly": false,
+                "auto_generated": false,
+                "notes": "Only applicable to smart collections"
+            }
+        }
+    ],
+    "metadata": {
+        "entity": "collection",
+        "system": "shopify",
+        "version": "1.0",
+        "last_updated": "2024-12-13",
+        "status": "active",
+        "notes": "Based on Shopify Admin API 2023-10 documentation"
+    }
+}

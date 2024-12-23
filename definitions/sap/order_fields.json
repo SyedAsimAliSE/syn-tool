@@ -1,0 +1,73 @@
+{
+    "DocEntry": {
+        "type": "integer",
+        "description": "The unique identifier for the order in SAP",
+        "required": true
+    },
+    "DocNum": {
+        "type": "string",
+        "description": "The document number in SAP",
+        "required": true
+    },
+    "DocDate": {
+        "type": "date",
+        "description": "The document date",
+        "required": true
+    },
+    "DocStatus": {
+        "type": "string",
+        "description": "The document status",
+        "required": true,
+        "enum": ["bost_Open", "bost_Close", "bost_Paid", "bost_Delivered"]
+    },
+    "DocTotal": {
+        "type": "decimal",
+        "description": "The total amount of the document",
+        "required": true
+    },
+    "DocCurrency": {
+        "type": "string",
+        "description": "The document currency",
+        "required": true
+    },
+    "CardCode": {
+        "type": "string",
+        "description": "The business partner code",
+        "required": true
+    },
+    "DocumentLines": {
+        "type": "array",
+        "description": "The document lines",
+        "required": true,
+        "items": {
+            "type": "object",
+            "properties": {
+                "LineNum": {
+                    "type": "integer",
+                    "description": "The line number",
+                    "required": true
+                },
+                "ItemCode": {
+                    "type": "string",
+                    "description": "The item code",
+                    "required": true
+                },
+                "Quantity": {
+                    "type": "decimal",
+                    "description": "The quantity",
+                    "required": true
+                },
+                "Price": {
+                    "type": "decimal",
+                    "description": "The price",
+                    "required": true
+                },
+                "WarehouseCode": {
+                    "type": "string",
+                    "description": "The warehouse code",
+                    "required": true
+                }
+            }
+        }
+    }
+}

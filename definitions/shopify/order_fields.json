@@ -1,0 +1,80 @@
+{
+    "id": {
+        "type": "string",
+        "description": "The unique identifier for the order",
+        "required": true
+    },
+    "order_number": {
+        "type": "string",
+        "description": "The order number that appears on the order",
+        "required": true
+    },
+    "created_at": {
+        "type": "datetime",
+        "description": "The date and time when the order was created",
+        "required": true
+    },
+    "status": {
+        "type": "string",
+        "description": "The order's status",
+        "required": true,
+        "enum": ["open", "closed", "cancelled"]
+    },
+    "total_price": {
+        "type": "decimal",
+        "description": "The sum of all line item prices",
+        "required": true
+    },
+    "currency": {
+        "type": "string",
+        "description": "The three-letter code for the currency",
+        "required": true
+    },
+    "customer": {
+        "type": "object",
+        "description": "Basic customer information",
+        "required": true,
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "The customer's ID",
+                "required": true
+            },
+            "email": {
+                "type": "string",
+                "description": "The customer's email",
+                "required": false
+            }
+        }
+    },
+    "line_items": {
+        "type": "array",
+        "description": "The line items for the order",
+        "required": true,
+        "items": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The line item ID",
+                    "required": true
+                },
+                "product_id": {
+                    "type": "string",
+                    "description": "The ID of the product",
+                    "required": true
+                },
+                "quantity": {
+                    "type": "integer",
+                    "description": "The quantity ordered",
+                    "required": true
+                },
+                "price": {
+                    "type": "decimal",
+                    "description": "The price per unit",
+                    "required": true
+                }
+            }
+        }
+    }
+}

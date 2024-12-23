@@ -1,0 +1,139 @@
+{
+    "field_mappings": [
+        {
+            "sap_field": "Code",
+            "shopify_field": "id",
+            "direction": "shopify-to-sap",
+            "transform": {
+                "type": "custom",
+                "function": "format_sap_code",
+                "params": {
+                    "prefix": "SH",
+                    "max_length": 20,
+                    "validation": "^[A-Za-z0-9-_]+$"
+                }
+            }
+        },
+        {
+            "sap_field": "Name",
+            "shopify_field": "title",
+            "direction": "both",
+            "transform": {
+                "type": "custom",
+                "function": "format_sap_name",
+                "params": {
+                    "max_length": 100
+                }
+            }
+        },
+        {
+            "sap_field": "Active",
+            "shopify_field": "published",
+            "direction": "both",
+            "transform": {
+                "type": "custom",
+                "function": "format_boolean",
+                "params": {
+                    "sap_true": "tYES",
+                    "sap_false": "tNO"
+                }
+            }
+        },
+        {
+            "sap_field": "Frozen",
+            "shopify_field": "published_at",
+            "direction": "shopify-to-sap",
+            "transform": {
+                "type": "custom",
+                "function": "format_published_status",
+                "params": {
+                    "sap_true": "tYES",
+                    "sap_false": "tNO"
+                }
+            }
+        },
+        {
+            "sap_field": "U_Description",
+            "shopify_field": "body_html",
+            "direction": "both",
+            "transform": {
+                "type": "custom",
+                "function": "format_html",
+                "params": {
+                    "max_length": 254,
+                    "strip_tags": true
+                }
+            }
+        },
+        {
+            "sap_field": "U_CollectionType",
+            "shopify_field": "collection_type",
+            "direction": "both",
+            "transform": {
+                "type": "custom",
+                "function": "format_collection_type",
+                "params": {
+                    "custom": "CUSTOM",
+                    "smart": "SMART"
+                }
+            }
+        },
+        {
+            "sap_field": "U_Rules",
+            "shopify_field": "rules",
+            "direction": "shopify-to-sap",
+            "transform": {
+                "type": "custom",
+                "function": "format_collection_rules",
+                "params": {
+                    "serialize": true
+                }
+            }
+        }
+    ],
+    "metadata": {
+        "entity": "group_collection",
+        "version": "1.2",
+        "last_updated": "2024-12-17",
+        "status": "active",
+        "notes": "Updated field mappings to match SAP B1 Service Layer API requirements"
+    },
+    "validation_rules": {
+        "sap": {
+            "Code": {
+                "type": "string",
+                "max_length": 20,
+                "pattern": "^[A-Za-z0-9-_]+$",
+                "required": true
+            },
+            "Name": {
+                "type": "string",
+                "max_length": 100,
+                "required": true
+            },
+            "Active": {
+                "type": "enum",
+                "values": ["tYES", "tNO"],
+                "required": true
+            }
+        },
+        "shopify": {
+            "id": {
+                "type": "string",
+                "required": true
+            },
+            "title": {
+                "type": "string",
+                "required": true
+            },
+            "handle": {
+                "type": "string",
+                "required": true
+            },
+            "published": {
+                "type": "boolean",
+                "required": true
+            }
+        }
+    }
+}
